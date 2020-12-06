@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<GridPane xmlns="http://javafx.com/javafx"
+          xmlns:fx="http://javafx.com/fxml"
+          fx:controller="org.kmap.ui.KarnaughGrid"
+          prefHeight="450.0" prefWidth="650.0" vgap="10" hgap="10">
+    <padding>
+        <Insets bottom="25" left="25" right="25" top="25" />
+    </padding>
+    <Spinner GridPane.columnIndex="0" GridPane.rowIndex="0" min="2" max="6" fx:id="variablesSpinner" prefWidth="60" />
+    <Button GridPane.columnIndex="0" GridPane.rowIndex="1" text="Submit" onAction="#submit" alignment="BOTTOM_CENTER" />
+    <Label GridPane.columnIndex="0" GridPane.rowIndex="2" GridPane.columnSpan="10" fx:id="resultLabel" />
+    <GridPane GridPane.columnIndex="1" GridPane.rowIndex="0" GridPane.columnSpan="3" GridPane.rowSpan="2" fx:id="grid" hgap="5" vgap="5" />
+</GridPane>
