@@ -1,5 +1,7 @@
 package org.kmap.logic;
 
+import org.kmap.logic.logicelements.LogicElement;
+
 import java.util.Set;
 
 public class Main {
@@ -33,5 +35,10 @@ public class Main {
         g3.flip(new TrueCell(false, false, false, true));
         printLoops(g3);
 
+        LogicElement l = LogicParser.parse("¬(A.¬B)+(¬A.B)");
+        System.out.println(l.calculate(new TrueCell(false, false)));
+        System.out.println(l.calculate(new TrueCell(false, true)));
+        System.out.println(!l.calculate(new TrueCell(true, false)));
+        System.out.println(l.calculate(new TrueCell(true, true)));
     }
 }
