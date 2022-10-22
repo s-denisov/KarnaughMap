@@ -15,7 +15,7 @@ public class KarnaughCell {
     private final ArrayList<Pos> availablePositions = new ArrayList<>();
     private final StackPane stackPane;
 
-    private String toGrayCode(int num, int length) {
+    private static String toGrayCode(int num, int length) {
         String unformatted = Integer.toBinaryString(num ^ (num >> 1));
         return String.format("%" + length + "s", unformatted).replace(" ", "0");
     }
@@ -38,9 +38,12 @@ public class KarnaughCell {
 
     public void resetPositions() {
         availablePositions.clear();
-        availablePositions.add(Pos.TOP_LEFT); availablePositions.add(Pos.TOP_RIGHT);
-        availablePositions.add(Pos.BOTTOM_LEFT); availablePositions.add(Pos.BOTTOM_RIGHT);
-        availablePositions.add(Pos.TOP_CENTER); availablePositions.add(Pos.BOTTOM_CENTER);
+        availablePositions.add(Pos.TOP_LEFT);
+        availablePositions.add(Pos.TOP_RIGHT);
+        availablePositions.add(Pos.BOTTOM_LEFT);
+        availablePositions.add(Pos.BOTTOM_RIGHT);
+        availablePositions.add(Pos.TOP_CENTER);
+        availablePositions.add(Pos.BOTTOM_CENTER);
     }
 
     public ArrayList<Pos> getAvailablePositions() {
@@ -53,6 +56,10 @@ public class KarnaughCell {
 
     public boolean matchesBooleanCoOrds(boolean[] coOrds) {
         return Arrays.equals(coOrds, booleanCoOrds);
+    }
+
+    public boolean[] getBooleanCoOrds() {
+        return booleanCoOrds;
     }
 
     public String getGrayRow() {

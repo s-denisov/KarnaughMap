@@ -20,20 +20,20 @@ public class Main {
         g.flip(new TrueCell(false, false, true, false));
         g.flip(new TrueCell(true, false, true, false));
         g.flip(new TrueCell(false, false, false, true));
-        printLoops(g);
+        System.out.println(g.findLoops().values());
 
         GridState g2 = new GridState(3);
         g2.flip(new TrueCell(false, false, false));
         g2.flip(new TrueCell(false, true, false));
         g2.flip(new TrueCell(false, false, true));
-        printLoops(g2);
+        System.out.println(g2.findLoops().values());
 
         GridState g3 = new GridState(4);
         g3.flip(new TrueCell(false, false, false, false));
         g3.flip(new TrueCell(true, false, false, false));
         g3.flip(new TrueCell(true, true, false, false));
         g3.flip(new TrueCell(false, false, false, true));
-        printLoops(g3);
+        System.out.println(g3.findLoops().values());
 
         LogicElement l = LogicParser.parse("¬(A.¬B)+(¬A.B)");
         System.out.println(l.calculate(new TrueCell(false, false)));

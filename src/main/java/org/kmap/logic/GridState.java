@@ -7,6 +7,7 @@ public class GridState {
 
     private final Set<TrueCell> trueCells = new HashSet<>();
     private final int size;
+
     public GridState(int size) {
         this.size = size;
     }
@@ -74,5 +75,9 @@ public class GridState {
             return allInOtherLoops;
         });
         return loops;
+    }
+
+    public Set<TrueCell> getTrueCells() {
+        return trueCells;
     }
 }

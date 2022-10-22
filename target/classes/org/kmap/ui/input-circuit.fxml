@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.control.Button?>
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="org.kmap.ui.InputCircuit"
+            prefHeight="450.0" prefWidth="650.0" fx:id="drawing">
+    <HBox AnchorPane.bottomAnchor="10" AnchorPane.leftAnchor="10" fx:id="starterGates" style="-fx-border-style: solid inside;" spacing="10" />
+    <Button text="Find Logic" AnchorPane.bottomAnchor="10" AnchorPane.rightAnchor="10" onAction="#findLogic"/>
+</AnchorPane>

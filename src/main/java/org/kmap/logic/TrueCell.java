@@ -5,6 +5,7 @@ import java.util.Arrays;
 public class TrueCell {
 
     private final boolean[] values;
+
     public TrueCell(boolean... values) {
         this.values = values;
     }

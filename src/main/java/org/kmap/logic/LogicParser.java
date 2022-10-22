@@ -3,18 +3,30 @@ package org.kmap.logic;
 import org.kmap.logic.logicelements.*;
 
 import java.util.ArrayList;
+import java.util.Set;
 
 public class LogicParser {
+
+    public static class InvalidInputException extends IllegalArgumentException {
+        InvalidInputException() {
+            super("Invalid input (allowed symbols: ABCD()¬.+)");
+        }
+    }
 
     private static class CharOrLogic {
         public final Character charValue;
         public final LogicElement logicValue;
+
         CharOrLogic(char value) {
-            charValue = value; logicValue = null;
+            charValue = value;
+            logicValue = null;
         }
+
         CharOrLogic(LogicElement value) {
-            logicValue = value; charValue = null;
+            logicValue = value;
+            charValue = null;
         }
+
         boolean charEquals(char char2) {
             return charValue != null && charValue == char2;
         }
@@ -23,6 +35,13 @@ public class LogicParser {
 
     private static int findIndex(ArrayList<CharOrLogic> chars, char toFind) {
         for (int i = 0; i < chars.size(); i++) {
+            if (chars.get(i).charEquals(toFind)) return i;
+        }
+        return -1;
+    }
+
+    private static int lastIndex(ArrayList<CharOrLogic> chars, char toFind) {
+        for (int i = chars.size() - 1; i >= 0; i--) {
             if (chars.get(i).charEquals(toFind)) return i;
         }
         return -1;
@@ -52,7 +71,7 @@ public class LogicParser {
             input.add(openBracket, new CharOrLogic(result));
         }
         int notIndex;
-        while ((notIndex = findIndex(input, '¬')) > -1) {
+        while ((notIndex = lastIndex(input, '¬')) > -1) {
             NotElement notValue = new NotElement();
             notValue.addInput(input.get(notIndex + 1).logicValue);
             input.remove(notIndex + 1);
@@ -69,7 +88,6 @@ public class LogicParser {
         int orIndex;
         while ((orIndex = findIndex(input, '+')) > -1) {
             OrElement orValue = new OrElement();
-            CharOrLogic e = input.get(orIndex - 1);
             orValue.addInput(input.get(orIndex - 1).logicValue);
             orValue.addInput(input.get(orIndex + 1).logicValue);
             input.subList(orIndex - 1, orIndex + 2).clear();
@@ -80,9 +98,23 @@ public class LogicParser {
 
     public static LogicElement parse(String input) {
         ArrayList<CharOrLogic> chars = new ArrayList<>();
+        input = input.replaceAll(" ", "");
+        if (!input.matches("[ABCD()¬.+]+")) {
+            throw new InvalidInputException();
+        }
+        for (int i = 0; i < input.length() - 1; i++) {
+            Set<Character> inputSymbols = Set.of('A', 'B', 'C', 'D');
+            if (inputSymbols.contains(input.charAt(i)) && (inputSymbols.contains(input.charAt(i + 1)) || input.charAt(i + 1) == '¬')) {
+                throw new InvalidInputException();
+            }
+        }
         for (int i = 0; i < input.length(); i++) {
             chars.add(new CharOrLogic(input.charAt(i)));
         }
-        return parse(chars);
+        try {
+            return parse(chars);
+        } catch (IndexOutOfBoundsException | NullPointerException e) {
+            throw new InvalidInputException();
+        }
     }
 }

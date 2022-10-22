@@ -6,6 +6,12 @@ import java.util.List;
 
 public interface LogicElement {
     boolean calculate(TrueCell inputValues);
+
     List<LogicElement> getInputs();
+
     void addInput(LogicElement input);
+
+    void removeInput(LogicElement input);
+
+    String simplify(SimplificationLogger logger, LogicElement parent);
 }

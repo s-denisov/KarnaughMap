@@ -4,15 +4,25 @@
 <?import javafx.scene.control.Spinner?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ScrollPane?>
 <GridPane xmlns="http://javafx.com/javafx"
           xmlns:fx="http://javafx.com/fxml"
           fx:controller="org.kmap.ui.KarnaughGrid"
-          prefHeight="450.0" prefWidth="650.0" vgap="10" hgap="10">
+          prefHeight="500.0" prefWidth="650.0" vgap="10" hgap="10">
     <padding>
         <Insets bottom="25" left="25" right="25" top="25" />
     </padding>
-    <Spinner GridPane.columnIndex="0" GridPane.rowIndex="0" min="2" max="6" fx:id="variablesSpinner" prefWidth="60" />
+    <Spinner GridPane.columnIndex="0" GridPane.rowIndex="0" min="2" max="4" fx:id="variablesSpinner" prefWidth="60" />
     <Button GridPane.columnIndex="0" GridPane.rowIndex="1" text="Submit" onAction="#submit" alignment="BOTTOM_CENTER" />
+    <Button GridPane.columnIndex="1" GridPane.rowIndex="3" text="Output Circuit" onAction="#outputCircuit" />
+    <Button GridPane.columnIndex="1" GridPane.rowIndex="4" text="Input Circuit" onAction="#inputCircuit" />
     <Label GridPane.columnIndex="0" GridPane.rowIndex="2" GridPane.columnSpan="10" fx:id="resultLabel" />
     <GridPane GridPane.columnIndex="1" GridPane.rowIndex="0" GridPane.columnSpan="3" GridPane.rowSpan="2" fx:id="grid" hgap="5" vgap="5" />
+    <TextField GridPane.columnIndex="4" GridPane.rowIndex="3" fx:id="inputExpression" />
+    <Button GridPane.columnIndex="4" GridPane.rowIndex="4" text="To grid" onAction="#drawGridFromExpression" />
+    <Label GridPane.columnIndex="0" GridPane.rowIndex="6" GridPane.columnSpan="2" wrapText="true" style="-fx-text-fill: red" fx:id="errorLabel" maxWidth="200" />
+    <ScrollPane GridPane.columnIndex="3" GridPane.rowIndex="6" GridPane.columnSpan="2" maxHeight="80">
+        <Label fx:id="algebraicSimplification" />
+    </ScrollPane>
 </GridPane>

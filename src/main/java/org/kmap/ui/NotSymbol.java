@@ -5,18 +5,14 @@ import javafx.scene.shape.ArcType;
 
 import java.util.ArrayList;
 
-public class NotSymbol implements LogicGateSymbol {
-
-    private final GraphicsContext gc;
-    private final double centerX;
-    private final double centerY;
+public class NotSymbol extends LogicGateSymbol {
 
     public NotSymbol(GraphicsContext gc, double centerX, double centerY) {
-        this.gc = gc; this.centerX = centerX; this.centerY = centerY;
+        super(gc, centerX, centerY);
         gc.strokePolygon(new double[]{centerX - 25, centerX - 25, centerX + 25}, new double[]{centerY - 20, centerY + 20, centerY}, 3);
         gc.strokeArc(centerX + 25, centerY - 5, 10, 10, 0, 360, ArcType.OPEN);
     }
-
+/*
     @Override
     public void setInputs(ArrayList<LogicGateSymbol> inputs, int lineOffset) {
         for (int i = 0; i < inputs.size(); i++) {
@@ -28,7 +24,7 @@ public class NotSymbol implements LogicGateSymbol {
             gc.strokeLine(input.getOutputX() + lineOffset, inputY, centerX - 25, inputY);
             lineOffset += 3;
         }
-    }
+    }*/
 
     @Override
     public double getOutputX() {
@@ -36,7 +32,7 @@ public class NotSymbol implements LogicGateSymbol {
     }
 
     @Override
-    public double getOutputY() {
-        return centerY;
+    protected double getInputX(double inputY) {
+        return centerX - 25;
     }
 }
