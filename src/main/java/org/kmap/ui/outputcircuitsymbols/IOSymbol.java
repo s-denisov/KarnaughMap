@@ -1,8 +1,9 @@
 package org.kmap.ui.outputcircuitsymbols;
 
 import javafx.scene.canvas.GraphicsContext;
+import org.kmap.ui.outputcircuitsymbols.LogicGateSymbol;
 
-import java.util.List;
+import java.util.ArrayList;
 
 public class IOSymbol extends LogicGateSymbol {
 
@@ -12,7 +13,7 @@ public class IOSymbol extends LogicGateSymbol {
     }
 
     @Override
-    public double setInputs(List<LogicGateSymbol> inputs, double lineOffset) {
+    public double setInputs(ArrayList<LogicGateSymbol> inputs, double lineOffset) {
         inputGates = inputs;
         for (LogicGateSymbol input : inputs) {
             gc.strokeLine(input.getOutputX(), input.getOutputY(), input.getOutputX() + lineOffset, input.getOutputY());

@@ -2,11 +2,14 @@ package org.kmap.ui.outputcircuitsymbols;
 
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.shape.ArcType;
+import org.kmap.ui.outputcircuitsymbols.LogicGateSymbol;
 
 public class OrSymbol extends LogicGateSymbol {
 
     public OrSymbol(GraphicsContext gc, double centerX, double centerY) {
         super(gc, centerX, centerY);
+//        gc.strokeArc(190, 200, 30, 40, 300, 120, ArcType.OPEN);
+//        gc.strokeArc(72, 200, 200, 40, -67, 134, ArcType.OPEN);
         gc.strokeArc(centerX - 40, centerY - 20, 30, 40, 300, 120, ArcType.OPEN);
         gc.strokeArc(centerX - 158, centerY - 20, 200, 40, -67, 134, ArcType.OPEN);
     }

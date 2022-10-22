@@ -4,4 +4,6 @@ module org.example {
 
     opens org.kmap.ui to javafx.fxml;
     exports org.kmap.ui;
+    exports org.kmap.ui.outputcircuitsymbols;
+    opens org.kmap.ui.outputcircuitsymbols to javafx.fxml;
 }

@@ -2,12 +2,17 @@ package org.kmap.ui.outputcircuitsymbols;
 
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.shape.ArcType;
+import org.kmap.ui.outputcircuitsymbols.LogicGateSymbol;
 
 public class AndSymbol extends LogicGateSymbol {
 
     private final int WIDTH = 20;
 
-    public AndSymbol(GraphicsContext gc, double centerX, double centerY) {
+    public AndSymbol(GraphicsContext gc, double centerX, double centerY) { // 230,110
+//        gc.strokeLine(210, 90, 210, 130);
+//        gc.strokeLine(210, 90, 250, 90);
+//        gc.strokeLine(210, 130, 250, 130);
+//        gc.strokeArc(230, 90, 40, 40, 270, 180, ArcType.OPEN);
         super(gc, centerX, centerY);
         int HEIGHT = 20;
         gc.strokeLine(centerX - WIDTH, centerY - HEIGHT, centerX - WIDTH, centerY + HEIGHT);
