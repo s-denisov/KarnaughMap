@@ -55,7 +55,7 @@ public class CircuitDrawing {
             inputs.add(input);
         }
         int i = 0;
-        List<LogicGateSymbol> orGateInputs = new ArrayList<>();
+        ArrayList<LogicGateSymbol> orGateInputs = new ArrayList<>();
         double offsetChange = 22.0 / tests.size();
         LogicGateSymbol.setOffsetChange(22.0 / tests.size());
         double offset = 5 + offsetChange;
@@ -75,7 +75,7 @@ public class CircuitDrawing {
             }
             AndSymbol andGate = new AndSymbol(gc, canvas.getWidth() / 4 * 2.5,
                     canvas.getHeight() / tests.size() * (i + 0.5));
-            List<LogicGateSymbol> andGateInputs = new ArrayList<>();
+            ArrayList<LogicGateSymbol> andGateInputs = new ArrayList<>();
             i++;
             for (int j = 0; j < test.getValues().length; j++) {
                 Boolean value = test.getValues()[j];
@@ -87,7 +87,7 @@ public class CircuitDrawing {
             offset = andGate.setInputs(andGateInputs, offset);
             orGateInputs.add(andGate);
         }
-        List<LogicGateSymbol> outputInputs = new ArrayList<>();
+        ArrayList<LogicGateSymbol> outputInputs = new ArrayList<>();
         if (orGateInputs.size() == 1) {
             outputInputs.add(orGateInputs.get(0));
         } else {
